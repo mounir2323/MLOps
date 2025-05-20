@@ -1,0 +1,32 @@
+# Ignorer les fichiers de données CSV
+*.csv
+
+# Ignorer les fichiers compilés Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignorer les fichiers temporaires
+*.tmp
+*.log
+*.bak
+*.swp
+*.swo
+
+# Environnements virtuels
+.env
+.venv/
+env/
+venv/
+*.env
+
+# Notebooks et checkpoints
+.ipynb_checkpoints/
+
+# Dossiers MLflow (si utilisés)
+mlruns/
+ml_pipeline/mlruns/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
