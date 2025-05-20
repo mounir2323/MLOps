@@ -5,6 +5,7 @@
 __pycache__/
 *.py[cod]
 *.pyo
+*.pyc
 
 # Ignorer les fichiers temporaires
 *.tmp
@@ -12,6 +13,7 @@ __pycache__/
 *.bak
 *.swp
 *.swo
+*.png
 
 # Environnements virtuels
 .env
@@ -30,3 +32,8 @@ ml_pipeline/mlruns/
 # Fichiers système
 .DS_Store
 Thumbs.db
+
+mlartifacts/*
+ml_pipeline/.tmp_dagster_home_w4elay03/*
+ml_pipeline/.tmp_dagster_home_w4elay03
+ml_pipeline/ml_pipeline/assets/__pycache__/*
