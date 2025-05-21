@@ -3,21 +3,17 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import matplotlib.pyplot as plt
 import dagster as dg
 import seaborn as sns
-import mlflow
 import pandas as pd
 from xgboost import XGBClassifier
+from dagster import ResourceDefinition, ResourceParam
+from ml_pipeline.resources.mlflow import mlflow_resource
 
 @dg.asset
-def model_accuracy(split_data: dict, trained_model: XGBClassifier):
-    # Configuration MLflow
-    # mlflow.set_tracking_uri("http://localhost:5003")
-    mlflow.set_experiment("Spotify Popularity Prediction")
-    mlflow.sklearn.autolog()
-    
+def model_accuracy(split_data: dict, trained_model: XGBClassifier, mlflow: ResourceParam):
     with mlflow.start_run(run_name="Evaluation Run"):
         X_test = split_data["X_test"]
         y_test = split_data["y_test"]
-        
+
         # Prédictions
         y_pred = trained_model.predict(X_test)
         y_proba = trained_model.predict_proba(X_test)[:, 1]
@@ -54,5 +50,5 @@ def model_accuracy(split_data: dict, trained_model: XGBClassifier):
 
         # Log du modèle XGBoost
         mlflow.xgboost.log_model(trained_model, "model")
-    
+
     return accuracy
