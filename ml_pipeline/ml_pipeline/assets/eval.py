@@ -2,36 +2,36 @@
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 import matplotlib.pyplot as plt
 import dagster as dg
+import mlflow as mlflow_module  # Import avec alias pour éviter la collision
 import seaborn as sns
 import pandas as pd
+import numpy as np
 from xgboost import XGBClassifier
-from dagster import ResourceDefinition, ResourceParam
-from ml_pipeline.resources.mlflow import mlflow_resource
+from ml_pipeline.resources.mlflow import MLflowTracking
 
 @dg.asset
-def model_accuracy(split_data: dict, trained_model: XGBClassifier, mlflow: ResourceParam):
-    with mlflow.start_run(run_name="Evaluation Run"):
+def model_accuracy(context: dg.AssetExecutionContext, split_data: dict, trained_model: XGBClassifier, mlflow: MLflowTracking):
+    with mlflow.start_run(run_name="Evaluation Run") as run:
         X_test = split_data["X_test"]
         y_test = split_data["y_test"]
 
-        # Prédictions
+        # Prédictions pour la signature du modèle
         y_pred = trained_model.predict(X_test)
-        y_proba = trained_model.predict_proba(X_test)[:, 1]
-
-        # Calcul des métriques
+        
+        # Calcul des métriques manuelles
         accuracy = accuracy_score(y_test, y_pred)
         precision = precision_score(y_test, y_pred)
         recall = recall_score(y_test, y_pred)
         f1 = f1_score(y_test, y_pred)
 
-        # Log des métriques
+        # Log des métriques avec MLflow
         metrics = {
             "ACC": accuracy,
             "PRC": precision,
             "REC": recall,
             "F1": f1,
         }
-        mlflow.log_metrics(metrics)
+        mlflow_module.log_metrics(metrics)
 
         # Matrice de confusion
         plt.figure(figsize=(8, 6))
@@ -40,15 +40,17 @@ def model_accuracy(split_data: dict, trained_model: XGBClassifier, mlflow: Resou
         plt.xlabel("Predicted")
         plt.ylabel("Actual")
         plt.title("Confusion Matrix")
-        plt.savefig("confusion_matrix.png")  # Sauvegarde avant log
-        mlflow.log_artifact("confusion_matrix.png")
+        plt.savefig("confusion_matrix.png")
+        mlflow_module.log_artifact("confusion_matrix.png")
         plt.close()
 
-        # Exemple de données (X_test au lieu de dt_test)
+        # Exemple de données
         X_test.head(10).to_csv("spotify_data_sample.csv")
-        mlflow.log_artifact("spotify_data_sample.csv")
+        mlflow_module.log_artifact("spotify_data_sample.csv")
 
-        # Log du modèle XGBoost
-        mlflow.xgboost.log_model(trained_model, "model")
+        # Ajouter des métadonnées à l'asset
+        context.add_output_metadata({
+            "metrics": metrics
+        })
 
     return accuracy

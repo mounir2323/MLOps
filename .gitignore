@@ -21,7 +21,7 @@ __pycache__/
 env/
 venv/
 *.env
-
+*.db
 # Notebooks et checkpoints
 .ipynb_checkpoints/
 
@@ -37,3 +37,6 @@ mlartifacts/*
 ml_pipeline/.tmp_dagster_home_w4elay03/*
 ml_pipeline/.tmp_dagster_home_w4elay03
 ml_pipeline/ml_pipeline/assets/__pycache__/*
+./ml_pipeline/.tmp_dagster_home_1vw_4ydt/*
+*.tmp_dagster_home_1vw_4ydt
+*ml_pipeline/.tmp_dagster_home_biz48ss5
