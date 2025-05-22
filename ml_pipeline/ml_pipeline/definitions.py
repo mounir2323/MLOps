@@ -1,5 +1,6 @@
 from dagster import Definitions
 from ml_pipeline.resources.mlflow import MLflowTracking
+from ml_pipeline.resources.lakeFS import LakeFSResource
 
 # Imports directs des assets depuis leurs modules respectifs
 from ml_pipeline.assets.preprocessing import raw_data, cleaned_data, preprocessed_data
@@ -24,6 +25,13 @@ defs = Definitions(
             enable_autolog=True,
             log_input_examples=True,
             log_model_signatures=True
+        ),
+        "lakefs": LakeFSResource(
+            endpoint="http://localhost:8000",
+            access_key="___",  
+            secret_key="_____",
+            repository="mlops-spoty-data"
         )
     }
 )
+

@@ -40,3 +40,4 @@ ml_pipeline/ml_pipeline/assets/__pycache__/*
 ./ml_pipeline/.tmp_dagster_home_1vw_4ydt/*
 *.tmp_dagster_home_1vw_4ydt
 *ml_pipeline/.tmp_dagster_home_biz48ss5
+lakectl.yaml
