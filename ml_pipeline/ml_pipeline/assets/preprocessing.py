@@ -1,25 +1,24 @@
-# ml_pipeline/assets/preprocessing.py
 import pandas as pd
 import dagster as dg
 from sklearn.preprocessing import LabelEncoder
+import os
 
-
-@dg.asset
+@dg.asset(io_manager_key="io_manager")
 def raw_data(context: dg.AssetExecutionContext):
-    """Charge les données brutes du CSV."""
-    df = pd.read_csv("data/spotify_data.csv")
+    """Charge les données brutes depuis un CSV local."""
+    csv_path = "data/spotify_data.csv" if os.path.exists("data/spotify_data.csv") else "ml_pipeline/data/spotify_data.csv"
+    df = pd.read_csv(csv_path)
     
     context.add_output_metadata({
         "raw_rows": len(df),
         "raw_columns": list(df.columns),
     })
     
-    return df
+    return df  # L'IO Manager s'occupe de sauvegarder dans LakeFS
 
-
-@dg.asset
+@dg.asset(io_manager_key="io_manager")
 def cleaned_data(context: dg.AssetExecutionContext, raw_data: pd.DataFrame):
-    """Nettoie les données en supprimant les colonnes inutiles et en transformant la popularité."""
+    """Nettoie les données."""
     df = raw_data.copy()
     df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
     df = df.drop(['track_id'], axis=1)
@@ -27,27 +26,22 @@ def cleaned_data(context: dg.AssetExecutionContext, raw_data: pd.DataFrame):
     
     context.log.info(f"Données nettoyées: {df.shape[0]} lignes, {df.shape[1]} colonnes")
     
-    return df
+    return df  # L'IO Manager sauvegarde automatiquement dans clean_data/
 
-
-@dg.asset
+@dg.asset(io_manager_key="io_manager")
 def preprocessed_data(context: dg.AssetExecutionContext, cleaned_data: pd.DataFrame):
     """Effectue l'encodage des variables catégorielles."""
     df = cleaned_data.copy()
-    
-    # Trouve les colonnes non numériques
     categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
-    context.log.info(f"Colonnes catégorielles détectées : {categorical_cols}")
-
-    # Encode-les avec Label Encoding
+    
     encoder = LabelEncoder()
     for col in categorical_cols:
         df[col] = encoder.fit_transform(df[col].astype(str))
-
+    
     context.add_output_metadata({
         "rows": len(df),
         "columns": list(df.columns),
         "categorical_columns_encoded": categorical_cols
     })
-
-    return df
+    
+    return df  # L'IO Manager sauvegarde automatiquement dans processed/

@@ -1,0 +1,10 @@
+🔍 [DEBUG] Asset: cleaned_data
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/clean_data/cleaned_spotify_data.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000
+🔍 [DEBUG] Asset: preprocessed_data
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/processed/preprocessed_data.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000

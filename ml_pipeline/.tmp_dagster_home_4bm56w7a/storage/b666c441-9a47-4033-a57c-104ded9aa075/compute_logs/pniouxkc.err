@@ -1,0 +1,29 @@
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - LOGS_CAPTURED - Started capturing logs in process (pid: 52265).
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - STEP_START - Started execution of step "eval_model".
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - eval_model - Chargement depuis LakeFS: s3://mlops-spoty-data/main/processed/split_data.parquet
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - LOADED_INPUT - Loaded input "split_data" using input manager "io_manager", from output "result" of step "split_data"
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - eval_model - Chargement depuis LakeFS: s3://mlops-spoty-data/main/models/trained_model.pkl
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - LOADED_INPUT - Loaded input "trained_model" using input manager "io_manager", from output "result" of step "trained_model"
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - STEP_INPUT - Got input "split_data" of type "DataFrame". (Type check passed).
+[32m2025-05-26 11:51:42 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - STEP_INPUT - Got input "trained_model" of type "XGBClassifier". (Type check passed).
+2025/05/26 11:51:42 WARNING mlflow.utils.autologging_utils: MLflow xgboost autologging is known to be compatible with 1.4.2 <= xgboost <= 3.0.0, but the installed version is 3.0.1. If you encounter errors during autologging, try upgrading / downgrading xgboost to a compatible version, or try upgrading MLflow.
+2025/05/26 11:51:43 WARNING mlflow.utils.autologging_utils: MLflow autologging encountered a warning: "/Users/level3/Desktop/MLopsSpoty/.venv/lib/python3.13/site-packages/mlflow/types/utils.py:452: UserWarning: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details."
+[32m2025-05-26 11:51:43 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2025-05-26 11:51:43 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - eval_model - Sauvegarde dans LakeFS: s3://mlops-spoty-data/main/processed/eval_model.parquet
+[32m2025-05-26 11:51:43 +0200[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52265 - eval_model - STEP_FAILURE - Execution of step "eval_model" failed.
+
+dagster._core.errors.DagsterExecutionHandleOutputError: Error occurred while handling output "result" of step "eval_model"::
+
+AttributeError: 'float' object has no attribute 'to_parquet'
+
+Stack Trace:
+  File "/Users/level3/Desktop/MLopsSpoty/.venv/lib/python3.13/site-packages/dagster/_core/execution/plan/utils.py", line 56, in op_execution_error_boundary
+    yield
+  File "/Users/level3/Desktop/MLopsSpoty/.venv/lib/python3.13/site-packages/dagster/_utils/__init__.py", line 392, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/level3/Desktop/MLopsSpoty/.venv/lib/python3.13/site-packages/dagster/_core/execution/plan/execute_step.py", line 773, in _gen_fn
+    gen_output = output_manager.handle_output(output_context, output.value)
+  File "/Users/level3/Desktop/MLopsSpoty/ml_pipeline/ml_pipeline/io_manger/lakefs_io_manager.py", line 80, in handle_output
+    obj.to_parquet(
+    ^^^^^^^^^^^^^^
+[0m

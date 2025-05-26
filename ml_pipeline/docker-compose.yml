@@ -1,0 +1,17 @@
+services:
+  lakefs:
+    image: treeverse/lakefs:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - LAKEFS_AUTH_ENCRYPT_SECRET_KEY=my-super-secret-key  
+      - LAKEFS_LOGGING_LEVEL=DEBUG
+      - LAKEFS_DATABASE_TYPE=local
+      - LAKEFS_BLOCKSTORE_TYPE=local
+      - LAKEFS_BLOCKSTORE_LOCAL_PATH=/data
+    # volumes:
+    #   - lakefs_data:/data
+    user: root
+
+volumes:
+  lakefs_data:

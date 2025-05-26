@@ -1,0 +1,10 @@
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - LOGS_CAPTURED - Started capturing logs in process (pid: 52165).
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - STEP_START - Started execution of step "split_data".
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - split_data - Chargement depuis LakeFS: s3://mlops-spoty-data/main/processed/preprocessed_data.parquet
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - LOADED_INPUT - Loaded input "preprocessed_data" using input manager "io_manager", from output "result" of step "preprocessed_data"
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - STEP_INPUT - Got input "preprocessed_data" of type "DataFrame". (Type check passed).
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2025-05-26 11:51:26 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - split_data - Sauvegarde dans LakeFS: s3://mlops-spoty-data/main/processed/split_data.parquet
+[32m2025-05-26 11:51:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - ASSET_MATERIALIZATION - Materialized value split_data.
+[32m2025-05-26 11:51:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-05-26 11:51:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52165 - split_data - STEP_SUCCESS - Finished execution of step "split_data" in 817ms.

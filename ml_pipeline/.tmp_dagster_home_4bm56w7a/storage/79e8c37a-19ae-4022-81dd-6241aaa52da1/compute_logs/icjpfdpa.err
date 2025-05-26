@@ -1,0 +1,11 @@
+[32m2025-05-26 11:51:17 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - LOGS_CAPTURED - Started capturing logs in process (pid: 52125).
+[32m2025-05-26 11:51:17 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - STEP_START - Started execution of step "cleaned_data".
+[32m2025-05-26 11:51:17 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - cleaned_data - Chargement depuis LakeFS: s3://mlops-spoty-data/main/raw/spotify_data.parquet
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - LOADED_INPUT - Loaded input "raw_data" using input manager "io_manager", from output "result" of step "raw_data"
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - STEP_INPUT - Got input "raw_data" of type "DataFrame". (Type check passed).
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - cleaned_data - Données nettoyées: 846426 lignes, 18 colonnes
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - cleaned_data - Sauvegarde dans LakeFS: s3://mlops-spoty-data/main/clean_data/cleaned_spotify_data.parquet
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - ASSET_MATERIALIZATION - Materialized value cleaned_data.
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 79e8c37a-19ae-4022-81dd-6241aaa52da1 - 52125 - cleaned_data - STEP_SUCCESS - Finished execution of step "cleaned_data" in 1.29s.

@@ -1,0 +1,7 @@
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - LOGS_CAPTURED - Started capturing logs in process (pid: 52131).
+[32m2025-05-26 11:51:18 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - raw_data - STEP_START - Started execution of step "raw_data".
+[32m2025-05-26 11:51:19 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - raw_data - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2025-05-26 11:51:19 +0200[0m - dagster - [34mINFO[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - raw_data - Sauvegarde dans LakeFS: s3://mlops-spoty-data/main/raw/spotify_data.parquet
+[32m2025-05-26 11:51:20 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - raw_data - ASSET_MATERIALIZATION - Materialized value raw_data.
+[32m2025-05-26 11:51:20 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - raw_data - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2025-05-26 11:51:20 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - b666c441-9a47-4033-a57c-104ded9aa075 - 52131 - raw_data - STEP_SUCCESS - Finished execution of step "raw_data" in 1.88s.

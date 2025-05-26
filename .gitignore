@@ -15,6 +15,23 @@ __pycache__/
 *.swo
 *.png
 
+# Ignorer les fichiers de données CSV
+*.csv
+
+# Ignorer les fichiers compilés Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+
+# Ignorer les fichiers temporaires
+*.tmp
+*.log
+*.bak
+*.swp
+*.swo
+*.png
+
 # Environnements virtuels
 .env
 .venv/
@@ -22,21 +39,34 @@ env/
 venv/
 *.env
 *.db
+
 # Notebooks et checkpoints
 .ipynb_checkpoints/
 
-# Dossiers MLflow (si utilisés)
+# Dossiers MLflow
 mlruns/
-ml_pipeline/mlruns/
+mlartifacts/
 
 # Fichiers système
 .DS_Store
 Thumbs.db
 
-mlartifacts/*
-ml_pipeline/.tmp_dagster_home_w4elay03/*
-ml_pipeline/.tmp_dagster_home_w4elay03
-ml_pipeline/ml_pipeline/assets/__pycache__/*
-./ml_pipeline/.tmp_dagster_home_1vw_4ydt/*
-*.tmp_dagster_home_1vw_4ydt
-*ml_pipeline/.tmp_dagster_home_biz48ss5
+# Dagster - Tous les dossiers temporaires (pattern global)
+**/.tmp_dagster_home_*/
+.tmp_dagster_home_*/
+**/.tmp_dagster_home_4bm56w7a/
+.tmp_dagster_home_4bm56w7a*/
+.tmp_dagster_home_4bm56w7a/*
+
+
+# Modèles et métriques générés
+models/
+metrics/
+*.pkl
+
+# Configuration LakeFS
+lakectl.yaml
+
+# Autres fichiers temporaires spécifiques
+splityear
+definitions.py

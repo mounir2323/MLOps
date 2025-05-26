@@ -1,0 +1,17 @@
+🔍 [DEBUG] Asset: split_data
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/processed/split_data.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000
+🔍 [DEBUG] Asset: trained_model
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/models/trained_model.pkl
+🔍 [DEBUG] Endpoint: http://localhost:8000
+🏃 View run Evaluation Run at: http://localhost:5003/#/experiments/614368501974599716/runs/64f2dbf401e74e059a99db79e5e612ba
+🧪 View experiment at: http://localhost:5003/#/experiments/614368501974599716
+🔍 [DEBUG] Asset: eval_model
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/processed/eval_model.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000

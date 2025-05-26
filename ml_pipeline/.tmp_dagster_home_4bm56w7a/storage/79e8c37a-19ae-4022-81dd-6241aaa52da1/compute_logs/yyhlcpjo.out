@@ -1,0 +1,5 @@
+🔍 [DEBUG] Asset: raw_data
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/raw/spotify_data.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000

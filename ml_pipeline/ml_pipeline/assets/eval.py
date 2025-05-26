@@ -10,10 +10,11 @@ from xgboost import XGBClassifier
 from ml_pipeline.resources.mlflow import MLflowTracking
 
 @dg.asset
-def model_accuracy(context: dg.AssetExecutionContext, split_data: dict, trained_model: XGBClassifier, mlflow: MLflowTracking):
+def eval_model(context: dg.AssetExecutionContext, split_data: pd.DataFrame, trained_model: XGBClassifier, mlflow: MLflowTracking):
     with mlflow.start_run(run_name="Evaluation Run") as run:
-        X_test = split_data["X_test"]
-        y_test = split_data["y_test"]
+        test = split_data[split_data["split"] == "test"]
+        X_test = test.drop(["popularity", "split"], axis=1)
+        y_test = test["popularity"]
 
         # Prédictions pour la signature du modèle
         y_pred = trained_model.predict(X_test)

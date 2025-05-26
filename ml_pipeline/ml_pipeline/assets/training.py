@@ -6,11 +6,14 @@ import mlflow.xgboost
 from xgboost import XGBClassifier
 import dagster as dg
 from ml_pipeline.resources.mlflow import MLflowTracking
+import pandas as pd
 
 @dg.asset
-def trained_model(context: dg.AssetExecutionContext, split_data: dict, mlflow: MLflowTracking):
-    X_train = split_data["X_train"]
-    y_train = split_data["y_train"]
+def trained_model(context: dg.AssetExecutionContext, split_data: pd.DataFrame, mlflow: MLflowTracking):
+    # Solution 2 : split_data est un DataFrame avec une colonne 'split'
+    train = split_data[split_data["split"] == "train"]
+    X_train = train.drop(["popularity", "split"], axis=1)
+    y_train = train["popularity"]
     
     # Configuration de MLflow avant de créer le modèle
     mlflow.setup_context()

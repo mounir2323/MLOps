@@ -1,0 +1,112 @@
+🔍 [DEBUG] Asset: split_data
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/processed/split_data.parquet
+🔍 [DEBUG] Endpoint: http://localhost:8000
+[0]	validation_0-logloss:0.10638
+[1]	validation_0-logloss:0.09510
+[2]	validation_0-logloss:0.09052
+[3]	validation_0-logloss:0.08670
+[4]	validation_0-logloss:0.08539
+[5]	validation_0-logloss:0.08456
+[6]	validation_0-logloss:0.08389
+[7]	validation_0-logloss:0.08354
+[8]	validation_0-logloss:0.08299
+[9]	validation_0-logloss:0.08258
+[10]	validation_0-logloss:0.08232
+[11]	validation_0-logloss:0.08177
+[12]	validation_0-logloss:0.08153
+[13]	validation_0-logloss:0.08128
+[14]	validation_0-logloss:0.08111
+[15]	validation_0-logloss:0.08097
+[16]	validation_0-logloss:0.08086
+[17]	validation_0-logloss:0.08077
+[18]	validation_0-logloss:0.08003
+[19]	validation_0-logloss:0.07986
+[20]	validation_0-logloss:0.07978
+[21]	validation_0-logloss:0.07934
+[22]	validation_0-logloss:0.07924
+[23]	validation_0-logloss:0.07923
+[24]	validation_0-logloss:0.07913
+[25]	validation_0-logloss:0.07893
+[26]	validation_0-logloss:0.07882
+[27]	validation_0-logloss:0.07878
+[28]	validation_0-logloss:0.07877
+[29]	validation_0-logloss:0.07876
+[30]	validation_0-logloss:0.07869
+[31]	validation_0-logloss:0.07867
+[32]	validation_0-logloss:0.07866
+[33]	validation_0-logloss:0.07823
+[34]	validation_0-logloss:0.07811
+[35]	validation_0-logloss:0.07809
+[36]	validation_0-logloss:0.07793
+[37]	validation_0-logloss:0.07794
+[38]	validation_0-logloss:0.07780
+[39]	validation_0-logloss:0.07778
+[40]	validation_0-logloss:0.07780
+[41]	validation_0-logloss:0.07780
+[42]	validation_0-logloss:0.07762
+[43]	validation_0-logloss:0.07754
+[44]	validation_0-logloss:0.07745
+[45]	validation_0-logloss:0.07729
+[46]	validation_0-logloss:0.07709
+[47]	validation_0-logloss:0.07709
+[48]	validation_0-logloss:0.07708
+[49]	validation_0-logloss:0.07707
+[50]	validation_0-logloss:0.07692
+[51]	validation_0-logloss:0.07689
+[52]	validation_0-logloss:0.07692
+[53]	validation_0-logloss:0.07693
+[54]	validation_0-logloss:0.07694
+[55]	validation_0-logloss:0.07697
+[56]	validation_0-logloss:0.07697
+[57]	validation_0-logloss:0.07681
+[58]	validation_0-logloss:0.07683
+[59]	validation_0-logloss:0.07684
+[60]	validation_0-logloss:0.07686
+[61]	validation_0-logloss:0.07683
+[62]	validation_0-logloss:0.07686
+[63]	validation_0-logloss:0.07677
+[64]	validation_0-logloss:0.07673
+[65]	validation_0-logloss:0.07676
+[66]	validation_0-logloss:0.07678
+[67]	validation_0-logloss:0.07678
+[68]	validation_0-logloss:0.07678
+[69]	validation_0-logloss:0.07680
+[70]	validation_0-logloss:0.07676
+[71]	validation_0-logloss:0.07666
+[72]	validation_0-logloss:0.07665
+[73]	validation_0-logloss:0.07664
+[74]	validation_0-logloss:0.07667
+[75]	validation_0-logloss:0.07659
+[76]	validation_0-logloss:0.07659
+[77]	validation_0-logloss:0.07662
+[78]	validation_0-logloss:0.07664
+[79]	validation_0-logloss:0.07657
+[80]	validation_0-logloss:0.07657
+[81]	validation_0-logloss:0.07654
+[82]	validation_0-logloss:0.07650
+[83]	validation_0-logloss:0.07651
+[84]	validation_0-logloss:0.07653
+[85]	validation_0-logloss:0.07653
+[86]	validation_0-logloss:0.07652
+[87]	validation_0-logloss:0.07649
+[88]	validation_0-logloss:0.07649
+[89]	validation_0-logloss:0.07651
+[90]	validation_0-logloss:0.07650
+[91]	validation_0-logloss:0.07653
+[92]	validation_0-logloss:0.07644
+[93]	validation_0-logloss:0.07643
+[94]	validation_0-logloss:0.07644
+[95]	validation_0-logloss:0.07645
+[96]	validation_0-logloss:0.07646
+[97]	validation_0-logloss:0.07647
+[98]	validation_0-logloss:0.07650
+[99]	validation_0-logloss:0.07651
+🏃 View run train_XGBC at: http://localhost:5003/#/experiments/614368501974599716/runs/93e097bb37654e2797acbce2932c9afd
+🧪 View experiment at: http://localhost:5003/#/experiments/614368501974599716
+🔍 [DEBUG] Asset: trained_model
+🔍 [DEBUG] Repository: mlops-spoty-data
+🔍 [DEBUG] Branch: main
+🔍 [DEBUG] Path généré: s3://mlops-spoty-data/main/models/trained_model.pkl
+🔍 [DEBUG] Endpoint: http://localhost:8000
