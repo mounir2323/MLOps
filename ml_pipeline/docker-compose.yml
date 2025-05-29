@@ -1,17 +1,41 @@
 services:
+  postgres:
+    image: postgres:15
+    container_name: lakefs_postgres
+    environment:
+      POSTGRES_DB: lakefs
+      POSTGRES_USER: lakefs
+      POSTGRES_PASSWORD: lakefs_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lakefs -d lakefs"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   lakefs:
     image: treeverse/lakefs:latest
+    container_name: lakefs_server
     ports:
       - "8000:8000"
     environment:
       - LAKEFS_AUTH_ENCRYPT_SECRET_KEY=my-super-secret-key  
       - LAKEFS_LOGGING_LEVEL=DEBUG
-      - LAKEFS_DATABASE_TYPE=local
+      - LAKEFS_DATABASE_TYPE=postgres
+      - LAKEFS_DATABASE_POSTGRES_CONNECTION_STRING=postgres://lakefs:lakefs_password@postgres:5432/lakefs?sslmode=disable
       - LAKEFS_BLOCKSTORE_TYPE=local
       - LAKEFS_BLOCKSTORE_LOCAL_PATH=/data
-    # volumes:
-    #   - lakefs_data:/data
+    volumes:
+      - lakefs_data:/data
+    depends_on:
+      postgres:
+        condition: service_healthy
     user: root
 
 volumes:
   lakefs_data:
+  postgres_data:

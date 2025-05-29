@@ -54,6 +54,54 @@ class LakeFSResource(ConfigurableResource):
         except lakefs_client.exceptions.NotFoundException:
             return False
 
+    def branch_exists(self, branch_name: str) -> bool:
+        """Vérifie si une branche existe."""
+        client = self.get_client()
+        try:
+            client.branches.get_branch(
+                repository=self.repository,
+                branch=branch_name
+            )
+            return True
+        except lakefs_client.exceptions.NotFoundException:
+            return False
+
+    def ensure_branch_exists(self, branch_name: str, source_ref: str = "main"):
+        """Crée une branche si elle n'existe pas déjà."""
+        if not self.branch_exists(branch_name):
+            logger = get_dagster_logger()
+            logger.info(f"Création automatique de la branche '{branch_name}'")
+            return self.create_branch(branch_name, source_ref)
+        return None
+
+    def list_objects(self, branch: str, prefix: str = ""):
+        """Liste les objets dans une branche avec un préfixe optionnel."""
+        client = self.get_client()
+        return client.objects.list_objects(
+            repository=self.repository,
+            ref=branch,
+            prefix=prefix
+        )
+
+    def merge_branch(self, source_branch: str, target_branch: str, message: str = "Auto merge"):
+        """Merge une branche source vers une branche cible."""
+        client = self.get_client()
+        return client.refs.merge_into_branch(
+            repository=self.repository,
+            source_ref=source_branch,
+            destination_branch=target_branch
+        )
+
+    def delete_objects(self, branch: str, paths: list):
+        """Supprime des objets d'une branche."""
+        client = self.get_client()
+        for path in paths:
+            client.objects.delete_object(
+                repository=self.repository,
+                branch=branch,
+                path=path
+            )
+
     def create_branch(self, branch_name: str, source_ref: str = "main"):
         """Crée une nouvelle branche basée sur une référence source."""
         client = self.get_client()
